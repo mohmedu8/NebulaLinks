@@ -4,10 +4,15 @@ import { handleMyAccount } from '../interactions/buttons/myAccount.js';
 import { handleSupport } from '../interactions/buttons/support.js';
 import { handleReviewApprove, handleDeclineReasonSubmit } from '../interactions/buttons/reviewDecline.js';
 import { handlePlanSelection, handlePaymentMethodSelection } from '../interactions/selectMenus/planSelection.js';
+import { handleAdminCommand } from '../commands/admin.js';
 
 export async function handleInteractionCreate(interaction) {
   try {
-    if (interaction.isButton()) {
+    if (interaction.isChatInputCommand()) {
+      if (interaction.commandName === 'admin') {
+        await handleAdminCommand(interaction);
+      }
+    } else if (interaction.isButton()) {
       if (interaction.customId === 'btn_buy_access') {
         await handleBuyAccess(interaction);
       } else if (interaction.customId === 'btn_my_account') {
