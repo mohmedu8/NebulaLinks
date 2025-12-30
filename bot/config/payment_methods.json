@@ -1,0 +1,22 @@
+{
+  "vodafone_cash": {
+    "name": "Vodafone Cash",
+    "instructions": "Send to: 01XXXXXXXXX\nReference: ORDER-{order_id}"
+  },
+  "orange_cash": {
+    "name": "Orange Cash",
+    "instructions": "Send to: 01XXXXXXXXX\nReference: ORDER-{order_id}"
+  },
+  "etisalat_cash": {
+    "name": "Etisalat Cash",
+    "instructions": "Send to: 01XXXXXXXXX\nReference: ORDER-{order_id}"
+  },
+  "we_cash": {
+    "name": "WE Cash",
+    "instructions": "Send to: 01XXXXXXXXX\nReference: ORDER-{order_id}"
+  },
+  "instapay": {
+    "name": "Instapay",
+    "instructions": "Send to: 01XXXXXXXXX\nReference: ORDER-{order_id}"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "vpn-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for VPN service management via 3x-ui panel",
+  "main": "src/bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/bot.js",
+    "dev": "node --watch src/bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.1",
+    "node-cron": "^3.0.2",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {}
+}

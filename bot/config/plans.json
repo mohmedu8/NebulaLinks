@@ -1,0 +1,23 @@
+[
+  {
+    "id": "plan_1",
+    "name": "Basic",
+    "duration_days": 30,
+    "traffic_gb": 50,
+    "price": 100
+  },
+  {
+    "id": "plan_2",
+    "name": "Premium",
+    "duration_days": 30,
+    "traffic_gb": 150,
+    "price": 250
+  },
+  {
+    "id": "plan_3",
+    "name": "Pro",
+    "duration_days": 30,
+    "traffic_gb": 300,
+    "price": 450
+  }
+]
