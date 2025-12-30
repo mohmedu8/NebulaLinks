@@ -1,0 +1,32 @@
+{
+  "VODAFONE": {
+    "name": "Vodafone Cash",
+    "wallet": "01XXXXXXXXX",
+    "receiver": "Receiver Name",
+    "instructions": "Send to Vodafone Cash wallet"
+  },
+  "ORANGE": {
+    "name": "Orange Cash",
+    "wallet": "01XXXXXXXXX",
+    "receiver": "Receiver Name",
+    "instructions": "Send to Orange Cash wallet"
+  },
+  "ETISALAT": {
+    "name": "Etisalat Cash",
+    "wallet": "01XXXXXXXXX",
+    "receiver": "Receiver Name",
+    "instructions": "Send to Etisalat Cash wallet"
+  },
+  "WE": {
+    "name": "WE Cash",
+    "wallet": "01XXXXXXXXX",
+    "receiver": "Receiver Name",
+    "instructions": "Send to WE Cash wallet"
+  },
+  "INSTAPAY": {
+    "name": "Instapay",
+    "account": "01XXXXXXXXX",
+    "receiver": "Receiver Name",
+    "instructions": "Send via Instapay to account"
+  }
+}
