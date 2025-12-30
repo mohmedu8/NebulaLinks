@@ -12,7 +12,7 @@ export class HealthMonitor {
 
   async start() {
     logger.info('Health monitor started');
-    this.checkHealth();
+    await this.checkHealth();
     this.intervalId = setInterval(() => this.checkHealth(), this.checkInterval);
   }
 

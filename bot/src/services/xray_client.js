@@ -1,4 +1,5 @@
 import axios from 'axios';
+import https from 'https';
 import logger from '../utils/logger.js';
 
 export class XrayClient {
@@ -6,10 +7,12 @@ export class XrayClient {
     this.baseURL = baseURL;
     this.username = username;
     this.password = password;
+    const httpsAgent = new https.Agent({ rejectUnauthorized: false });
     this.client = axios.create({
       baseURL,
       timeout: 10000,
-      validateStatus: () => true
+      validateStatus: () => true,
+      httpsAgent
     });
     this.sessionId = null;
     this.healthy = false;
@@ -17,7 +20,7 @@ export class XrayClient {
 
   async authenticate() {
     try {
-      const response = await this.client.post('/panel/api/login', {
+      const response = await this.client.post('/login', {
         username: this.username,
         password: this.password
       });
@@ -37,7 +40,10 @@ export class XrayClient {
 
   async isHealthy() {
     try {
-      const response = await this.client.get('/panel/api/server', {
+      if (!this.sessionId) {
+        await this.authenticate();
+      }
+      const response = await this.client.get('/server', {
         headers: { 'Cookie': `PHPSESSID=${this.sessionId}` }
       });
       this.healthy = response.status === 200;
@@ -60,7 +66,7 @@ export class XrayClient {
       };
 
       const response = await this.client.post(
-        `/panel/api/inbounds/${inboundId}/addClient`,
+        `/inbounds/${inboundId}/addClient`,
         clientData,
         { headers: { 'Cookie': `PHPSESSID=${this.sessionId}` } }
       );
@@ -80,7 +86,7 @@ export class XrayClient {
   async updateClient(inboundId, clientId, updates) {
     try {
       const response = await this.client.post(
-        `/panel/api/inbounds/${inboundId}/updateClient/${clientId}`,
+        `/inbounds/${inboundId}/updateClient/${clientId}`,
         updates,
         { headers: { 'Cookie': `PHPSESSID=${this.sessionId}` } }
       );
@@ -99,7 +105,7 @@ export class XrayClient {
   async deleteClient(inboundId, clientId) {
     try {
       const response = await this.client.post(
-        `/panel/api/inbounds/${inboundId}/delClient/${clientId}`,
+        `/inbounds/${inboundId}/delClient/${clientId}`,
         {},
         { headers: { 'Cookie': `PHPSESSID=${this.sessionId}` } }
       );
@@ -118,7 +124,7 @@ export class XrayClient {
   async getClientStats(email) {
     try {
       const response = await this.client.get(
-        `/panel/api/inbounds/getClientStats/${email}`,
+        `/inbounds/getClientStats/${email}`,
         { headers: { 'Cookie': `PHPSESSID=${this.sessionId}` } }
       );
 
@@ -135,7 +141,7 @@ export class XrayClient {
   async resetClientTraffic(inboundId, email) {
     try {
       const response = await this.client.post(
-        `/panel/api/inbounds/${inboundId}/resetClientTraffic/${email}`,
+        `/inbounds/${inboundId}/resetClientTraffic/${email}`,
         {},
         { headers: { 'Cookie': `PHPSESSID=${this.sessionId}` } }
       );
